@@ -43,4 +43,8 @@ public class CategoriaServico {
             }
         }
     }
+
+    public boolean existeCategoria(Long idCategoria){
+        return categoriaR.existsById(idCategoria);
+    }
 }

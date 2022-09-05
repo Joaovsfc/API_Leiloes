@@ -38,4 +38,7 @@ public class ItemServico {
         }
     }
 
+    public boolean existeItem(Long idItem){
+        return itemRepositorio.existsById(idItem);
+    }
 }
