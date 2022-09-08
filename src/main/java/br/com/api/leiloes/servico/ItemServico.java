@@ -41,4 +41,16 @@ public class ItemServico {
     public boolean existeItem(Long idItem){
         return itemRepositorio.existsById(idItem);
     }
+
+    public ResponseEntity<RespostaModelo> remover(Long idItem){
+        boolean existe = itemRepositorio.existsById(idItem);
+        if(existe){
+            itemRepositorio.deleteById(idItem);
+            respostaModelo.setMensagem("O item foi excluida com sucesso!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.OK);
+        }else{
+            respostaModelo.setMensagem("Item selecionado não existe!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        }
+    }
 }

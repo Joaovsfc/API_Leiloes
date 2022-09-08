@@ -47,4 +47,18 @@ public class CategoriaServico {
     public boolean existeCategoria(Long idCategoria){
         return categoriaR.existsById(idCategoria);
     }
+
+    public ResponseEntity<RespostaModelo> remover(Long codigo){
+        boolean existe = existeCategoria(codigo);
+        if(existe){
+            categoriaR.deleteById(codigo);
+            respostaM.setMensagem("A categoria Foi excluida com sucesso!");
+            return new ResponseEntity<RespostaModelo>(respostaM, HttpStatus.OK);
+        }else{
+            respostaM.setMensagem("A categoria não existe!");
+            return new ResponseEntity<RespostaModelo>(respostaM, HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+
 }

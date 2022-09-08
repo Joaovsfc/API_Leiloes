@@ -47,4 +47,20 @@ public class ImagemServico {
             }
         }
     }
+
+    public boolean existeImagem (Long idImagem){
+        return imagemRepositorio.existsById(idImagem);
+    }
+
+    public ResponseEntity<RespostaModelo> remover (long idImagem){
+        boolean existe = existeImagem(idImagem);
+        if(existe){
+            imagemRepositorio.deleteById(idImagem);
+            respostaModelo.setMensagem("Imagem excluida com sucesso!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.OK);
+        }else{
+            respostaModelo.setMensagem("Imagem selecionado não existe!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
