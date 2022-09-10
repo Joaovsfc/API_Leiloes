@@ -21,4 +21,5 @@ public class UsuarioModelo {
     private boolean inLeiloeiro;
     private String email;
     private String senha;
+    private String nome;
 }
