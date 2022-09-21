@@ -21,9 +21,9 @@ public class EnderecoModelo {
     private String logradouro;
     private String numero;
     private String complemento;
-    private String bairo;
+    private String bairro;
     private String cidade;
     private String estado;
-    private char uf;
+    private String uf;
     private boolean atual;
 }
