@@ -80,6 +80,17 @@ public class LeilaoServico {
         }         
     }
 
+    public ResponseEntity<RespostaModelo> remover(Long codigo){
+        boolean existe = existe(codigo);
+        if(existe){
+            leilaoRepositorio.deleteById(codigo);
+            respostaModelo.setMensagem("O Leilão foi excluida com sucesso!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.OK);
+        }else{
+            respostaModelo.setMensagem("O Leilão não existe!");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        }
+    } 
 
 
 }
