@@ -1,11 +1,9 @@
 package br.com.api.leiloes.modelo;
 
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -36,17 +32,15 @@ public class LeilaoModelo {
     private UsuarioModelo leiloeiro;
     private String titulo;
     private String descricao;
-
+    @JsonFormat(pattern="dd/MM/yyyy hh:mm:ss", locale = "pt-BR", timezone = "Brazil/East")
     private Date dtInicio;
-
+    @JsonFormat(pattern="dd/MM/yyyy hh:mm:ss", locale = "pt-BR", timezone = "Brazil/East")
     private Date dtFim;
-
     private Boolean isArremate;
     
     @OneToOne
     @JoinColumn(name = "id_ganhador", referencedColumnName = "idUsuario")
     private UsuarioModelo ganhador; 
-
     private Double valorInicial;
     private Double valorAtual;
     private Double valorArremate;
@@ -64,16 +58,6 @@ public class LeilaoModelo {
 
     public String getDtFim(){
         return dateFormater(this.dtFim);
-    }
-    
+    }    
 
-
-
-
-    
-    
-    
-
-
-    
 }

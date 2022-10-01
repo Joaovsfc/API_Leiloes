@@ -69,7 +69,6 @@ public class EnderecoServico {
     } 
     */
     
-
     public ResponseEntity<?> cadastrarAlterar(EnderecoModelo endereco, String acao){
         if(acao.equals("cadastrar")){
             ValidadorModelo enderecoValido = validarCadastro(endereco);
