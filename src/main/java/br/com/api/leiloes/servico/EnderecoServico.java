@@ -83,7 +83,7 @@ public class EnderecoServico {
             if(existe(endereco.getIdEndereco())){
                 return new ResponseEntity<>(enderecoRepositorio.save(endereco),HttpStatus.OK); 
             }else{
-                respostaModelo.setMensagem("Falha ao editar o endereço");
+                respostaModelo.setMensagem("Falha ao editar o endereço. Endereço não existe.");
                 return new ResponseEntity<RespostaModelo>(respostaModelo,HttpStatus.BAD_REQUEST);
             }
         }         

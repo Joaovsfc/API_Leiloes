@@ -22,4 +22,5 @@ public class UsuarioModelo {
     private String email;
     private String senha;
     private String nome;
+    
 }
