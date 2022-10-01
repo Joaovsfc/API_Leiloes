@@ -20,5 +20,4 @@ public class LeilaoControle {
     public Iterable<LeilaoModelo> listar(){
         return leilaoServico.listar();
     }
-    
 }

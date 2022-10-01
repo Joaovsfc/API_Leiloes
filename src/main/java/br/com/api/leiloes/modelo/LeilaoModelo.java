@@ -1,6 +1,9 @@
 package br.com.api.leiloes.modelo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.Generated;
 import javax.persistence.Entity;
@@ -34,13 +37,11 @@ public class LeilaoModelo {
     private String titulo;
     private String descricao;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dtInicio;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dtFim;
 
-    private Boolean isArramete;
+    private Boolean isArremate;
     
     @OneToOne
     @JoinColumn(name = "id_ganhador", referencedColumnName = "idUsuario")
@@ -51,6 +52,19 @@ public class LeilaoModelo {
     private Double valorArremate;
     private Double step;
     
+    public String dateFormater(Date dt){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String dataFormatada = dateFormat.format(dt);
+        return dataFormatada;
+    }
+
+    public String getDtInicio(){
+        return dateFormater(this.dtInicio);
+    }
+
+    public String getDtFim(){
+        return dateFormater(this.dtFim);
+    }
     
 
 
