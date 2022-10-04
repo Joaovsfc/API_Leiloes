@@ -1,7 +1,5 @@
 package br.com.api.leiloes.servico;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +31,7 @@ public class LeilaoServico {
         ValidadorModelo validador = new ValidadorModelo();
         if(leilao.getTitulo().equals("")){
             validador.setCampo("Titulo");
-            validador.setMensagem("O tirulo é obrigatorio");
+            validador.setMensagem("O titulo é obrigatorio");
             validador.setValido(false);
         }else if(leilao.getDescricao().equals("")){
             validador.setCampo("descricao");
@@ -45,7 +43,7 @@ public class LeilaoServico {
             validador.setValido(false);
         }else if(leilao.getDtFim().equals("")){
             validador.setCampo("Data fim");
-            validador.setMensagem("A tata fim é obrigatorio");
+            validador.setMensagem("A data fim é obrigatorio");
             validador.setValido(false);
         }else if(leilao.getValorInicial() == null){
             validador.setCampo("Valor inicial é obrigatorio");

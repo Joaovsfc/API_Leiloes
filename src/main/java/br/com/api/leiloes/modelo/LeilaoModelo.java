@@ -2,13 +2,16 @@ package br.com.api.leiloes.modelo;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,6 +40,9 @@ public class LeilaoModelo {
     @JsonFormat(pattern="dd/MM/yyyy hh:mm:ss", locale = "pt-BR", timezone = "Brazil/East")
     private Date dtFim;
     private Boolean isArremate;
+
+    @ManyToMany(mappedBy = "leiloes")
+    private List<ItemModelo> itens = new ArrayList<>();
     
     @OneToOne
     @JoinColumn(name = "id_ganhador", referencedColumnName = "idUsuario")
@@ -45,6 +51,7 @@ public class LeilaoModelo {
     private Double valorAtual;
     private Double valorArremate;
     private Double step;
+     
     
     public String dateFormater(Date dt){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
