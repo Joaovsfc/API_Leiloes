@@ -1,5 +1,7 @@
 package br.com.api.leiloes.controle;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,5 +42,10 @@ public class UsuarioControle {
     @PutMapping("/usuario/alterar")
     public ResponseEntity<?> alterar(@RequestBody UsuarioModelo usuarioModelo){
         return usuarioServico.cadastrarAlterar(usuarioModelo, "alterar");
+    }
+
+    @GetMapping("/usuario/login")
+    public List<UsuarioModelo> login(@RequestBody UsuarioModelo usuarioModelo){
+        return usuarioServico.validarLogin(usuarioModelo.getEmail());
     }
 }

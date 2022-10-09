@@ -1,5 +1,7 @@
 package br.com.api.leiloes.servico;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +57,10 @@ public class UsuarioServico {
             respostaModelo.setMensagem("O não existe!");
             return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public List<UsuarioModelo> validarLogin(String email){
+        List <UsuarioModelo> usuarios =  usuarioRepositorio.findByEmail(email);
+        return usuarios;
     }
 }
