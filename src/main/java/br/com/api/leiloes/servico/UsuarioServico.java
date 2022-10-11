@@ -59,8 +59,29 @@ public class UsuarioServico {
         }
     }
 
-    public List<UsuarioModelo> validarLogin(String email){
+    public List<UsuarioModelo> validarLoginTeste(String email){
         List <UsuarioModelo> usuarios =  usuarioRepositorio.findByEmail(email);
         return usuarios;
+    }
+
+    /*
+     * public boolean validarLogin(UsuarioModelo usuario){
+        boolean existe = true;
+        List<UsuarioModelo> usu = usuarioRepositorio.findBySenhaAndEmail(usuario.getSenha(), usuario.getEmail());//usuarioRepositorio.findByEmailAndPassword(email, senha);
+        if(usu.isEmpty()){
+            existe = false;
+        }
+        return existe;
+    }
+     */
+    public UsuarioModelo validarLogin(UsuarioModelo usuario){
+        boolean existe = true;
+        UsuarioModelo usu = usuarioRepositorio.findBySenhaAndEmail(usuario.getSenha(), usuario.getEmail());//usuarioRepositorio.findByEmailAndPassword(email, senha);
+        if(usu.getEmail().equals("")){
+            usu.setIdUsuario(null);
+        }else{
+            usu.setSenha("");
+        }
+        return usu;
     }
 }

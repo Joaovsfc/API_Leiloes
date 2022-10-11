@@ -44,8 +44,9 @@ public class UsuarioControle {
         return usuarioServico.cadastrarAlterar(usuarioModelo, "alterar");
     }
 
-    @GetMapping("/usuario/login")
-    public List<UsuarioModelo> login(@RequestBody UsuarioModelo usuarioModelo){
-        return usuarioServico.validarLogin(usuarioModelo.getEmail());
+    @PostMapping("/usuario/login")
+    public UsuarioModelo login(@RequestBody UsuarioModelo usuarioModelo){
+        UsuarioModelo  usuario = usuarioServico.validarLogin(usuarioModelo);
+        return usuario;
     }
 }

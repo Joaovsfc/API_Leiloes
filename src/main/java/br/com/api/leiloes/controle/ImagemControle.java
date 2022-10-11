@@ -15,7 +15,7 @@ import br.com.api.leiloes.modelo.RespostaModelo;
 import br.com.api.leiloes.servico.ImagemServico;
 
 @RestController
-@CrossOrigin(originPatterns = "*")
+@CrossOrigin(origins = "*")
 public class ImagemControle {
     
     @Autowired
